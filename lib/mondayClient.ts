@@ -1,12 +1,11 @@
 // Cliente centralizado para integración con monday.com
 import axios from 'axios';
 
-const MONDAY_API_TOKEN = process.env.MONDAY_API_TOKEN;
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 
-if (!MONDAY_API_TOKEN) throw new Error('MONDAY_API_TOKEN no configurado');
-
 export async function mondayQuery(query: string, variables?: any) {
+  const MONDAY_API_TOKEN = process.env.MONDAY_API_TOKEN;
+  if (!MONDAY_API_TOKEN) throw new Error('MONDAY_API_TOKEN no configurado');
   const res = await axios.post(
     MONDAY_API_URL,
     { query, variables },
