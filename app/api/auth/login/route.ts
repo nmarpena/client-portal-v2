@@ -21,8 +21,8 @@ export async function POST(req: NextRequest) {
   console.log('Usuarios recibidos desde monday:', JSON.stringify(items, null, 2));
   // Asume que hay columnas 'username', 'password', 'email' en el board
   const user = items.find((item: any) => {
-    const usernameCol = item.column_values.find((col: any) => col.id === 'username');
-    const passwordCol = item.column_values.find((col: any) => col.id === 'password');
+    const usernameCol = item.column_values.find((col: any) => col.id === 'text_mkxx2x28');
+    const passwordCol = item.column_values.find((col: any) => col.id === 'text_mkxwh804');
     console.log('Comparando:', {
       usernameInput: username,
       passwordInput: password,
