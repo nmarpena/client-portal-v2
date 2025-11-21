@@ -23,6 +23,11 @@ export async function POST(req: NextRequest) {
   const user = items.find((item: any) => {
     const usernameCol = item.column_values.find((col: any) => col.id === 'text_mkxx2x28');
     const passwordCol = item.column_values.find((col: any) => col.id === 'text_mkxwh804');
+    console.log('--- DEPURACIÓN LOGIN ---');
+    console.log('Input usuario:', username);
+    console.log('Input contraseña:', password);
+    console.log('Board usuario:', usernameCol?.text);
+    console.log('Board contraseña:', passwordCol?.text);
     console.log('Comparando:', {
       usernameInput: username,
       passwordInput: password,
