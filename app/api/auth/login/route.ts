@@ -18,16 +18,17 @@ export async function POST(req: NextRequest) {
   }`;
   const data = await mondayQuery(query, { board: [USERS_BOARD_ID] });
   const items = data.data.items || [];
-  console.log('Usuarios recibidos desde monday:', JSON.stringify(items, null, 2));
+  console.log('--- ITEMS RECIBIDOS DESDE MONDAY ---');
+  items.forEach((item: any) => {
+    console.log('Item:', item.name);
+    item.column_values.forEach((col: any) => {
+      console.log(`  Columna: ${col.id} | Valor: ${col.text}`);
+    });
+  });
   // Asume que hay columnas 'username', 'password', 'email' en el board
   const user = items.find((item: any) => {
-    const usernameCol = item.column_values.find((col: any) => col.id === 'text_mkxx2x28');
-    const passwordCol = item.column_values.find((col: any) => col.id === 'text_mkxwh804');
-    console.log('--- DEPURACIÓN LOGIN ---');
-    console.log('Input usuario:', username);
-    console.log('Input contraseña:', password);
-    console.log('Board usuario:', usernameCol?.text);
-    console.log('Board contraseña:', passwordCol?.text);
+    const usernameCol = item.column_values.find((col: any) => col.id === 'username');
+    const passwordCol = item.column_values.find((col: any) => col.id === 'password');
     console.log('Comparando:', {
       usernameInput: username,
       passwordInput: password,
