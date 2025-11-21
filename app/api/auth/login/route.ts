@@ -7,6 +7,13 @@ import { mondayQuery } from '../../../../lib/mondayClient';
 const USERS_BOARD_ID = 18386098097; // <-- ID real del board de usuarios
 
 export async function POST(req: NextRequest) {
+  // Validación de la variable de entorno MONDAY_API_TOKEN
+  const mondayApiToken = process.env.MONDAY_API_TOKEN;
+  console.log("MONDAY_API_TOKEN:", mondayApiToken ? "[EXISTE]" : "[NO CONFIGURADA]");
+  if (!mondayApiToken) {
+    return NextResponse.json({ error: "MONDAY_API_TOKEN no configurada en el entorno." }, { status: 401 });
+  }
+
   const { username, password } = await req.json();
   // Consulta los usuarios desde el board de monday.com
   const query = `query ($board: [Int!]) {
