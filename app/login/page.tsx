@@ -35,35 +35,37 @@ export default function LoginPage() {
         style={{ boxShadow: '0 2px 8px rgba(0,0,0,.075)' }}
       >
         <img
-          src="/logo1.png"
+          src="/logo4.png"
           alt="Logo Redsis"
-          className="mb-2 w-14 h-14 object-contain drop-shadow-sm"
+          className="mb-2 w-14 h-14 object-contain drop-shadow-sm mx-auto"
         />
         <h1 className="text-xl sm:text-2xl font-bold mb-2 text-[#FFD400] text-center">Acceso al Portal Redsis</h1>
         <p className="text-gray-500 mb-6 text-center text-sm">Bienvenido, ingresa tus credenciales para continuar</p>
-        <input
-          type="text"
-          required
-          placeholder="Usuario"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition"
-        />
-        <input
-          type="password"
-          required
-          placeholder="Contraseña"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition"
-        />
-        <button
-          type="submit"
-          className="bg-[#FFD400] hover:bg-[#ffbc0f] text-gray-900 font-semibold px-4 py-2 rounded-md w-full border-2 border-[#FFD400] transition-colors duration-200 shadow-sm mt-2"
-        >
-          Ingresar
-        </button>
-        {error && <p className="text-red-600 mt-3 text-center text-sm">{error}</p>}
+        <div className="w-full flex flex-col items-center">
+          <input
+            type="text"
+            required
+            placeholder="Usuario"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition text-center"
+          />
+          <input
+            type="password"
+            required
+            placeholder="Contraseña"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition text-center"
+          />
+          <button
+            type="submit"
+            className="bg-[#FFD400] hover:bg-[#ffbc0f] text-gray-900 font-semibold px-4 py-2 rounded-md w-full border-2 border-[#FFD400] transition-colors duration-200 shadow-sm mt-2"
+          >
+            Ingresar
+          </button>
+          {error && <p className="text-red-600 mt-3 text-center text-sm">{error}</p>}
+        </div>
       </form>
     </div>
   );
