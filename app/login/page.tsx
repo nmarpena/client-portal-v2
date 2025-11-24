@@ -35,7 +35,7 @@ export default function LoginPage() {
         style={{ boxShadow: '0 2px 8px rgba(0,0,0,.075)' }}
       >
         <img
-          src="/logo4.png"
+          src="/logo1.png"
           alt="Logo Redsis"
           className="mb-2 w-14 h-14 object-contain drop-shadow-sm mx-auto"
         />
