@@ -23,25 +23,26 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#eaf0f7]">
+    <div className="min-h-screen flex items-center justify-center bg-[#eaf0f7] px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-lg border border-[#d8d8d8] w-full max-w-md flex flex-col items-center"
-        style={{ boxShadow: '0 2px 5px rgba(0,0,0,.075)' }}
+        className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-[#d8d8d8] w-full max-w-md flex flex-col items-center"
+        style={{ boxShadow: '0 2px 8px rgba(0,0,0,.075)' }}
       >
         <img
           src="/logo1.png"
           alt="Logo Redsis"
-          className="mb-6 w-32 h-32 object-contain"
+          className="mb-4 w-20 h-20 object-contain drop-shadow-sm"
         />
-        <h1 className="text-2xl font-bold mb-4 text-[#FFD400]">Acceso al Portal</h1>
+        <h1 className="text-xl sm:text-2xl font-bold mb-2 text-[#FFD400] text-center">Acceso al Portal Redsis</h1>
+        <p className="text-gray-500 mb-6 text-center text-sm">Bienvenido, ingresa tus credenciales para continuar</p>
         <input
           type="text"
           required
           placeholder="Usuario"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800"
+          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition"
         />
         <input
           type="password"
@@ -49,15 +50,15 @@ export default function LoginPage() {
           placeholder="Contraseña"
           value={password}
           onChange={e => setPassword(e.target.value)}
-          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800"
+          className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition"
         />
         <button
           type="submit"
-          className="bg-[#FFD400] hover:bg-[#ffbc0f] text-gray-900 font-semibold px-4 py-2 rounded w-full border-2 border-[#FFD400] transition-colors duration-200 shadow"
+          className="bg-[#FFD400] hover:bg-[#ffbc0f] text-gray-900 font-semibold px-4 py-2 rounded-md w-full border-2 border-[#FFD400] transition-colors duration-200 shadow-sm mt-2"
         >
           Ingresar
         </button>
-        {error && <p className="text-red-600 mt-2 text-center">{error}</p>}
+        {error && <p className="text-red-600 mt-3 text-center text-sm">{error}</p>}
       </form>
     </div>
   );
