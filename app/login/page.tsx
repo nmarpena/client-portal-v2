@@ -26,7 +26,7 @@ export default function LoginPage() {
     <div
       className="min-h-screen flex items-center justify-center px-4"
       style={{
-        background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)',
+        background: 'linear-gradient(120deg, #eaf0f7 60%, #FFD400 100%)',
       }}
     >
       <form
@@ -37,7 +37,7 @@ export default function LoginPage() {
         <img
           src="/logo1.png"
           alt="Logo Redsis"
-          className="mb-4 w-20 h-20 object-contain drop-shadow-sm"
+          className="mb-2 w-14 h-14 object-contain drop-shadow-sm"
         />
         <h1 className="text-xl sm:text-2xl font-bold mb-2 text-[#FFD400] text-center">Acceso al Portal Redsis</h1>
         <p className="text-gray-500 mb-6 text-center text-sm">Bienvenido, ingresa tus credenciales para continuar</p>
