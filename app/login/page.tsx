@@ -18,55 +18,58 @@ export default function LoginPage() {
     if (res.ok) {
       window.location.href = '/dashboard';
     } else {
-      setError('Usuario o contraseña incorrectos.');
+      const data = await res.json();
+      if (data.code === 'usuario_inactivo') {
+        setError('Usuario inactivo. No puede iniciar sesión.');
+      } else {
+        setError(data.error || 'Usuario o contraseña incorrectos.');
+      }
     }
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4"
-      style={{
-        background: 'linear-gradient(120deg, #eaf0f7 60%, #FFD400 100%)',
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-[#d8d8d8] w-full max-w-md flex flex-col items-center"
-        style={{ boxShadow: '0 2px 8px rgba(0,0,0,.075)' }}
-      >
-        <img
-          src="/logo1.png"
-          alt="Logo Redsis"
-          className="mb-2 w-14 h-14 object-contain drop-shadow-sm mx-auto"
-        />
-        <h1 className="text-xl sm:text-2xl font-bold mb-2 text-[#FFD400] text-center">Acceso al Portal Redsis</h1>
-        <p className="text-gray-500 mb-6 text-center text-sm">Bienvenido, ingresa tus credenciales para continuar</p>
-        <div className="w-full flex flex-col items-center">
+    <main className="login-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: '#3b3b3b', fontFamily: 'Montserrat, Arial, sans-serif' }}>
+      <img src="/login/colorb-s.png" alt="Logo Redsis" className="login-logo" style={{ width: '90px', height: '90px', marginBottom: '32px', objectFit: 'contain' }} />
+      <h1 className="portal-title" style={{ textAlign: 'center', color: '#fff', fontFamily: 'Montserrat, Arial, sans-serif', fontSize: '0.9rem', fontWeight: 500, marginBottom: '2px', marginTop: '-24px', letterSpacing: '1px' }}>Client Portal</h1>
+      <div style={{ height: '2em' }}></div>
+      <form className="login-form" autoComplete="off" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '340px', display: 'flex', flexDirection: 'column', gap: '20px', background: 'transparent', padding: 0 }}>
+        <div className="input-group" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+          <span className="input-icon" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+            <svg width="20" height="20" fill="none" stroke="#a2a2a2" strokeWidth="2" viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <polyline points="3 7 12 13 21 7" />
+            </svg>
+          </span>
           <input
             type="text"
             required
-            placeholder="Usuario"
+            placeholder="E-mail"
             value={username}
             onChange={e => setUsername(e.target.value)}
-            className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition text-center"
+            style={{ width: '100%', padding: '12px 12px 12px 44px', background: '#fff', border: '1.5px solid #d8d8d8', borderRadius: '7px', fontSize: '16px', color: '#333', fontFamily: 'inherit', outline: 'none', transition: 'border-color 0.2s' }}
+            className="login-input"
           />
+        </div>
+        <div className="input-group" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+          <span className="input-icon" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+            <svg width="20" height="20" fill="none" stroke="#a2a2a2" strokeWidth="2" viewBox="0 0 24 24">
+              <rect x="5" y="11" width="14" height="8" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
           <input
             type="password"
             required
-            placeholder="Contraseña"
+            placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            className="border-2 border-[#FFD400] p-3 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFD400] bg-white text-gray-800 placeholder-gray-400 transition text-center"
+            style={{ width: '100%', padding: '12px 12px 12px 44px', background: '#fff', border: '1.5px solid #d8d8d8', borderRadius: '7px', fontSize: '16px', color: '#333', fontFamily: 'inherit', outline: 'none', transition: 'border-color 0.2s' }}
+            className="login-input"
           />
-          <button
-            type="submit"
-            className="bg-[#FFD400] hover:bg-[#ffbc0f] text-gray-900 font-semibold px-4 py-2 rounded-md w-full border-2 border-[#FFD400] transition-colors duration-200 shadow-sm mt-2"
-          >
-            Ingresar
-          </button>
-          {error && <p className="text-red-600 mt-3 text-center text-sm">{error}</p>}
         </div>
+        <button type="submit" className="login-btn" style={{ width: '100%', padding: '12px 0', background: 'transparent', border: '2px solid #ffcf44', borderRadius: '7px', color: '#fff', fontSize: '16px', fontFamily: 'inherit', fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s, color 0.2s', letterSpacing: '0.5px' }}>Sing In</button>
+        {error && <div id="loginError" style={{ marginTop: '10px', color: '#ff4d4f', fontSize: '14px', textAlign: 'center' }}>{error}</div>}
       </form>
-    </div>
+    </main>
   );
 }

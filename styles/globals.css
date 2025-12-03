@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-main: #05070c;
+  --bg-card: #151821;
+  /* ...otras variables que estaban en page.module.css... */
+}
